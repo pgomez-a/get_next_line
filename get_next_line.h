@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:42:11 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:06:45 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:30:41 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 # include <stdlib.h>
 
 int		get_next_line(int fd, char **line);
-
-char	*ft_strnew(int n);
-
-int		look_for_nl(const char *s1, int c);
 
 size_t	ft_strlen(const char *s);
 

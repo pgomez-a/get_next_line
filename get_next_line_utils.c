@@ -6,35 +6,12 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:41:05 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:04:27 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:32:59 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-
-char	*ft_strnew(int n)
-{
-	char	*ptr;
-
-	if (!(ptr = (char *)malloc(sizeof(char) * (n + 1))))
-		return (0);
-	return (ptr);	
-}
-
-int		look_for_nl(const char *s1, int c)
-{
-	int		count;
-
-	count = 0;
-	while(s1[count])
-	{
-		if (s1[count] == (unsigned char)c)
-			return (1);
-		count++;
-	}
-	return (0);
-}
 
 size_t	ft_strlen(const char *s)
 {

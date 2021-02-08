@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:31:52 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:06:53 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:18:28 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int		main(void)
 		}
 	}
 	close(fd);
-	system("leaks a.out");
+//	system("leaks a.out");
 	return (0);
 }

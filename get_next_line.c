@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/09 13:24:32 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/09 14:39:35 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	gnl_buff_nl(char *buff, char **res, char *temp, char **line)
 	*line = ft_strjoin(*line, temp);
 	free(temp);
 	free(*res);
-	temp = NULL;
 	*res = ft_strchr(buff, '\n');
 }
 
@@ -86,9 +85,15 @@ int			get_next_line(int fd, char **line)
 		if ((verif = gnl_look_for_nl(buff, '\n')) == 1)
 		{
 			gnl_buff_nl(buff, &res, temp, &*line);
+			temp = NULL;
 			return (1);
 		}
 		*line = ft_strjoin(*line, buff);
+	}
+	if (num == 0 && res != NULL)
+	{
+		free(res);
+		res = NULL;
 	}
 	return (0);
 }

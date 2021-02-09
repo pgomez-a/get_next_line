@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 09:31:52 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/09 13:17:20 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/09 14:12:42 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(void)
 			}
 			else if (result == 0)
 			{
-				printf("%s\n", line);
+				printf("%s", line);
 				break ;
 			}
 			else if (result == 1)
@@ -46,6 +46,6 @@ int		main(void)
 		}
 	}
 	close(fd);
-//	system("leaks a.out");
+	//system("leaks a.out");
 	return (0);
 }

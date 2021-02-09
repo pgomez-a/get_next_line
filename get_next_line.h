@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:42:11 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:30:41 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:18:43 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char *s1, char *s2);
 
 char	*ft_strchr(const char *s, int c);
 
-char	*ft_memccpy(char *src, int c, int n);
+char	*ft_memccpy(const char *src, int c, int n);
 
 char	*ft_strdup(char *s1);
 

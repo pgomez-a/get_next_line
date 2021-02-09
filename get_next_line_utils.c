@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:41:05 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:32:59 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/09 13:17:22 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_memccpy(char *src, int c, int n)
+char	*ft_memccpy(const char *src, int c, int n)
 {
 	int		i;
 	char	*str;

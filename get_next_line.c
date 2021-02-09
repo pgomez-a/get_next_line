@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/08 14:32:46 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/09 13:24:32 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*gnl_strnew(int n)
 	char	*ptr;
 
 	if (!(ptr = (char *)malloc(sizeof(char) * (n + 1))))
-		return (0);
+		return (NULL);
 	return (ptr);
 }
 
@@ -26,12 +26,17 @@ static int	gnl_look_in_res(char *res, char *temp, char **line)
 {
 	if (res != NULL)
 		free(*line);
-	res = (res == NULL) ? gnl_strnew(1) : res;
+	if (res == NULL)
+	{
+		res = gnl_strnew(1);
+		free(res);
+	}
 	if ((temp = ft_strchr(res, '\n')))
 	{
 		*line = ft_memccpy(res, '\n', BUFFER_SIZE);
 		free(res);
-		res = temp;
+		res = ft_strdup(temp);
+		free(temp);
 		return (1);
 	}
 	*line = ft_strdup(res);
@@ -52,14 +57,14 @@ static int	gnl_look_for_nl(const char *s1, int c)
 	return (0);
 }
 
-static void gnl_buff_nl(char *buff, char *res, char *temp, char **line)
+static void	gnl_buff_nl(char *buff, char **res, char *temp, char **line)
 {
 	temp = ft_memccpy(buff, '\n', BUFFER_SIZE);
 	*line = ft_strjoin(*line, temp);
 	free(temp);
-	free(res);
+	free(*res);
 	temp = NULL;
-	res = ft_strchr(buff, '\n');
+	*res = ft_strchr(buff, '\n');
 }
 
 int			get_next_line(int fd, char **line)
@@ -72,6 +77,7 @@ int			get_next_line(int fd, char **line)
 
 	if (!(fd >= 0 && fd < 123) || BUFFER_SIZE <= 0 || !line)
 		return (-1);
+	temp = NULL;
 	if ((num = gnl_look_in_res(res, temp, &*line)) == 1)
 		return (1);
 	while ((num = read(fd, buff, BUFFER_SIZE)) > 0)
@@ -79,7 +85,7 @@ int			get_next_line(int fd, char **line)
 		buff[num] = '\0';
 		if ((verif = gnl_look_for_nl(buff, '\n')) == 1)
 		{
-			gnl_buff_nl(buff, res, temp, &*line);
+			gnl_buff_nl(buff, &res, temp, &*line);
 			return (1);
 		}
 		*line = ft_strjoin(*line, buff);

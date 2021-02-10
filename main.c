@@ -5,47 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 09:31:52 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/09 14:12:42 by pgomez-a         ###   ########.fr       */
+/*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/02/10 09:48:40 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
-#include "get_next_line.h"
-
-int		main(void)
+int main()
 {
-	int		fd;
-	int		result;
-	int		verif = 0;
-	char	*line;
+    int fd;
+    int r;
+    char *line = 0;
+    int i = 0;
 
-	fd = open("t1_consalto.txt", O_RDONLY);
-	if (fd <= 0)
-		printf("OPEN ERROR: el archivo no se puede abrir.\n");
-	else
-	{
-		printf("OPEN SUCCESS\n");
-		result = get_next_line(fd, &line);
-		while (verif == 0)
-		{
-			if (result == -1)
-			{
-				printf("READ ERROR: no se puede leer el archivo.\n");
-				break ;
-			}
-			else if (result == 0)
-			{
-				printf("%s", line);
-				break ;
-			}
-			else if (result == 1)
-				printf("%s\n", line);
-			result = get_next_line(fd, &line);
-		}
-	}
-	close(fd);
-	//system("leaks a.out");
-	return (0);
+    fd = 0;
+    fd = open("t1_consalto.txt", O_RDONLY);
+    r = 1;
+    while (r == 1)
+    {
+        r = get_next_line(fd, &line);
+        //printf("%i", r);
+        printf("\n%s\n", line);
+        if (line)
+            free(line);
+        i++;
+    }
+    close(fd);
+    printf ("Termina, valor de r final: %i\n", r);
+    system("leaks a.out");
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/10 13:03:32 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:54:30 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static void	gnl_buff_nl(char *buff, char **res, char *temp, char **line)
 	temp = ft_memccpy(buff, '\n', BUFFER_SIZE);
 	*line = ft_strjoin(*line, temp);
 	free(temp);
-	temp = NULL;
-	*res = ft_strchr(buff, '\n'); // ----> Da 6 leaks para BUFFER_SIZE=1
+	*res = ft_strchr(buff, '\n');
 }
 
 int			get_next_line(int fd, char **line)
@@ -82,9 +81,8 @@ int			get_next_line(int fd, char **line)
 		buff[num] = '\0';
 		if ((verif = gnl_look_for_nl(buff, '\n')) == 1)
 		{
-			if (res[0])
-				free(res);
 			gnl_buff_nl(buff, &res, temp, line);
+			temp = NULL;
 			return (1);
 		}
 		*line = ft_strjoin(*line, buff);

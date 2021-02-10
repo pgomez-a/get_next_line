@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/10 10:54:30 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:05:52 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ static char	*gnl_strnew(int n)
 	if (!(ptr = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	return (ptr);
+}
+
+static int	gnl_look_for_nl(const char *s1)
+{
+	int	count;
+
+	count = 0;
+	while (s1[count])
+	{
+		if (s1[count] == '\n')
+			return (1);
+		count++;
+	}
+	return (0);
 }
 
 static int	gnl_look_in_res(char **res, char *temp, char **line)
@@ -41,27 +55,13 @@ static int	gnl_look_in_res(char **res, char *temp, char **line)
 	return (0);
 }
 
-static int	gnl_look_for_nl(const char *s1, int c)
-{
-	int	count;
-
-	count = 0;
-	while (s1[count])
-	{
-		if (s1[count] == (unsigned char)c)
-			return (1);
-		count++;
-	}
-	return (0);
-}
-
-static void	gnl_buff_nl(char *buff, char **res, char *temp, char **line)
+/*static void	gnl_buff_nl(char *buff, char **res, char *temp, char **line)
 {
 	temp = ft_memccpy(buff, '\n', BUFFER_SIZE);
 	*line = ft_strjoin(*line, temp);
 	free(temp);
 	*res = ft_strchr(buff, '\n');
-}
+}*/
 
 int			get_next_line(int fd, char **line)
 {
@@ -79,9 +79,9 @@ int			get_next_line(int fd, char **line)
 	while ((num = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[num] = '\0';
-		if ((verif = gnl_look_for_nl(buff, '\n')) == 1)
+		if ((verif = gnl_look_for_nl(buff)) == 1)
 		{
-			gnl_buff_nl(buff, &res, temp, line);
+			//gnl_buff_nl(buff, &res, temp, line);
 			temp = NULL;
 			return (1);
 		}

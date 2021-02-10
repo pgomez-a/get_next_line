@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/10 09:48:40 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/10 13:52:35 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main()
     while (r == 1)
     {
         r = get_next_line(fd, &line);
-        //printf("%i", r);
         printf("\n%s\n", line);
         if (line)
             free(line);

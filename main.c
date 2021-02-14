@@ -22,7 +22,7 @@ int main(void)
 	int i = 0;
 
 	fd = 0;
-	fd = open("42_with_nl.txt", O_RDONLY);
+	fd = open("alternate_line_nl_no_nl.txt", O_RDONLY);
 	r = 1;
 	while (r == 1)
 	{

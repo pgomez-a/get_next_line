@@ -41,6 +41,7 @@ static int	gnl_look_in_res(char **res, char **line)
 
 	if (*res)
 	{
+		free(*line);
 		free(*res);
 		if ((temp = ft_strchr(*res , '\n')))
 		{
@@ -78,7 +79,6 @@ int			get_next_line(int fd, char **line)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	free(*line);
 	if ((num = gnl_look_in_res(&res, line)) == 1)
 		return (1);
 	while ((num = read(fd, buff, BUFFER_SIZE)) > 0)

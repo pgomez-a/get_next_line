@@ -22,18 +22,16 @@ int main(void)
 	int i = 0;
 
 	fd = 0;
-	fd = open("t1_consalto.txt", O_RDONLY);
+	fd = open("42_with_nl.txt", O_RDONLY);
 	r = 1;
 	while (r == 1)
 	{
-		r = get_next_line(fd, &line);
-		printf("\n%s\n", line);
-		if (line)
-			free(line);
+		r = get_next_line(fd,  &line);
+		printf("%s\n", line);
 		i++;
 	}
+	printf("\n\nFINAL\n\n");
 	close(fd);
-	//printf ("Termina, valor de r final: %i\n", r);
 	system("leaks a.out");
 	return (0);
 }

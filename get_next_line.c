@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*gnl_strnew(int n)
 {
@@ -39,38 +38,35 @@ static int	gnl_look_for_nl(const char *s1)
 static int	gnl_look_in_res(char **res, char **line)
 {
 	char	*temp;
-	int		verif;
 
-	if (*res == NULL)
+	if (*res)
 	{
-		*res = gnl_strnew(1);
 		free(*res);
+		if ((temp = ft_strchr(*res , '\n')))
+		{
+			*temp = '\0';
+			temp++;
+			*line = ft_strdup(*res);
+			*res = ft_strdup(temp);
+			return (1);
+		}
+		else
+			*line = ft_strdup(*res);
 	}
-	if ((verif = gnl_look_for_nl(*res)) == 1)
-	{
-		temp = ft_strchr(*res, '\n');
-		*line = ft_memccpy(*res, '\n', BUFFER_SIZE);
-		free(*res);
-		*res = ft_strdup(temp);
-		free(temp);
-		temp = NULL;
-		return (1);
-	}
-	*line = ft_strdup(*res);
+	else
+		*line = gnl_strnew(1);
 	return (0);
 }
 
-static void	gnl_buff_nl(char *buff, int prov, char **res, char **line)
+static void	gnl_buff_nl(char *buff, char **res, char **line)
 {
 	char	*temp;
 
-	temp = ft_memccpy(buff, '\n', BUFFER_SIZE);
-	*line = ft_strjoin(*line, temp);
-	free(temp);
-	temp = NULL;
-	if (prov == 1)
-		free(*res);
-	*res = ft_strchr(buff, '\n');
+	temp = ft_strchr(buff, '\n');
+	*temp = '\0';
+	temp++;
+	*line = ft_strjoin(*line, buff);
+	*res = ft_strdup(temp);
 }
 
 int			get_next_line(int fd, char **line)
@@ -79,13 +75,10 @@ int			get_next_line(int fd, char **line)
 	char		buff[BUFFER_SIZE + 1];
 	int			verif;
 	int			num;
-	int			prov;
 
-	prov = 1;
-	if (res == NULL)
-		prov = 0;
-	if (!(fd >= 0 && fd < 123) || BUFFER_SIZE <= 0 || !line)
+	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
+	free(*line);
 	if ((num = gnl_look_in_res(&res, line)) == 1)
 		return (1);
 	while ((num = read(fd, buff, BUFFER_SIZE)) > 0)
@@ -93,10 +86,12 @@ int			get_next_line(int fd, char **line)
 		buff[num] = '\0';
 		if ((verif = gnl_look_for_nl(buff)) == 1)
 		{
-			gnl_buff_nl(buff, prov, &res, line);
+			gnl_buff_nl(buff, &res, line);
 			return (1);
 		}
 		*line = ft_strjoin(*line, buff);
 	}
-	return (0);
+	if (num == 0)
+		return (0);
+	return (-1);
 }

@@ -22,11 +22,11 @@ int main(void)
 	int i = 0;
 
 	fd = 0;
-	fd = open("alternate_line_nl_no_nl.txt", O_RDONLY);
+	fd = open("t1_consalto.txt", O_RDONLY);
 	r = 1;
 	while (r == 1)
 	{
-		r = get_next_line(fd,  &line);
+		r = get_next_line(10,  &line);
 		printf("%s\n", line);
 		i++;
 	}

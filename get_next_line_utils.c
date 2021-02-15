@@ -33,7 +33,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[count_s1 - 1] = s1[count_s1 - 1];
 		count_s1--;
 	}
-	free((char *)s1);
 	return (str);
 }
 
@@ -68,18 +67,4 @@ char	*ft_strdup(const char *s1)
 	}
 	str[count] = '\0';
 	return (str);
-}
-
-char	*ft_strcpy(char *dst, char *src)
-{
-	int	count;
-
-	count = 0;
-	while (src[count])
-	{
-		dst[count] = src[count];
-		count++;
-	}
-	dst[count] = '\0';
-	return (dst);
 }

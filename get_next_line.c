@@ -6,92 +6,69 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/11 09:41:16 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:23:07 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-static char	*gnl_strnew(int n)
+static int	gnl_find_EOF(char **res, char **line)
 {
-	char	*ptr;
+	char	*temp_1;
+	char	*temp_2;
 
-	if (!(ptr = (char *)malloc(sizeof(char) * (n + 1))))
-		return (NULL);
-	return (ptr);
-}
-
-static int	gnl_look_for_nl(const char *s1)
-{
-	int	count;
-
-	count = 0;
-	while (s1[count])
+	if ((temp_1 = ft_strchr(*res, '\n')))
 	{
-		if (s1[count] == '\n')
-			return (1);
-		count++;
+		temp_2 = *res;
+		*temp_1 = '\0';
+		temp_1++;
+		*line = ft_strdup(*res);
+		*res = ft_strdup(temp_1);
+		free(temp_2);
+		return (1);
 	}
+	*line = ft_strdup(*res);
 	return (0);
 }
 
-static int	gnl_look_in_res(char **res, char **line)
+static int	gnl_find_nl(char **res, char **line)
 {
-	char	*temp;
+	char	*temp_1;
+	char	*temp_2;
 
-	if (*res)
-	{
-		free(*line);
-		free(*res);
-		if ((temp = ft_strchr(*res , '\n')))
-		{
-			*temp = '\0';
-			temp++;
-			*line = ft_strdup(*res);
-			*res = ft_strdup(temp);
-			return (1);
-		}
-		else
-			*line = ft_strdup(*res);
-	}
-	else
-		*line = gnl_strnew(1);
-	return (0);
-}
-
-static void	gnl_buff_nl(char *buff, char **res, char **line)
-{
-	char	*temp;
-
-	temp = ft_strchr(buff, '\n');
-	*temp = '\0';
-	temp++;
-	*line = ft_strjoin(*line, buff);
-	*res = ft_strdup(temp);
+	temp_1 = *res;
+	temp_2 = ft_strchr(*res, '\n');
+	*temp_2 = '\0';
+	temp_2++;
+	*line = ft_strdup(*res);	
+	*res = ft_strdup(temp_2);
+	free(temp_1);
+	return (1);
 }
 
 int			get_next_line(int fd, char **line)
 {
 	static char	*res;
 	char		buff[BUFFER_SIZE + 1];
-	int			verif;
+	char		*temp;
 	int			num;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	if ((num = gnl_look_in_res(&res, line)) == 1)
-		return (1);
-	while ((num = read(fd, buff, BUFFER_SIZE)) > 0)
+	if (!res)
+		res = ft_strdup("");
+	while (!(ft_strchr(res , '\n')) && (num = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[num] = '\0';
-		if ((verif = gnl_look_for_nl(buff)) == 1)
-		{
-			gnl_buff_nl(buff, &res, line);
-			return (1);
-		}
-		*line = ft_strjoin(*line, buff);
+		temp = res;
+		res = ft_strjoin(res, buff);
+		free(temp);
 	}
 	if (num == 0)
-		return (0);
+		return (gnl_find_EOF(&res, line));
+	else if (num > 0)
+		return (gnl_find_nl(&res, line)); 
+	free(res);
 	return (-1);
 }

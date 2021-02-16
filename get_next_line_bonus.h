@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 11:21:39 by pgomez-a         ###   ########.fr       */
+/*   Created: 2021/02/03 08:42:11 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/02/16 11:22:25 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(void)
-{
-	int fd;
-	int r;
-	char *line = 0;
-	int i = 0;
+# include <unistd.h>
+# include <stdlib.h>
 
-	fd = 0;
-	fd = open("t1_consalto.txt", O_RDONLY);
-	r = 1;
-	while (r == 1)
-	{
-		r = get_next_line(fd,  &line);
-		printf("%s\n", line);
-		i++;
-	}
-	printf("\n\nFINAL\n\n");
-	close(fd);
-	return (0);
-}
+# ifndef M_SIZE
+#  define M_SIZE 65535
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 36
+# endif
+
+int		get_next_line(int fd, char **line);
+
+size_t	ft_strlen(const char *s);
+
+char	*ft_strjoin(char const *s1, char const *s2);
+
+char	*ft_strchr(char const *s, int c);
+
+char	*ft_strdup(char const *s1);
+
+#endif

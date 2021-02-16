@@ -6,12 +6,41 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/15 14:23:07 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/16 09:42:22 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+void	ft_bzero(char *s, size_t n)
+{
+	unsigned char	*p;
+	size_t			a;
+
+	p = (unsigned char *)s;
+	a = 0;
+	while (a < n)
+	{
+		p[a] = '\0';
+		a++;
+	}
+}
+
+int		delmem(char **p)
+{
+	if (p)
+	{
+		if (*p)
+		{
+			ft_bzero(*p, ft_strlen(*p));
+			free(*p);
+			*p = NULL;
+			return (1);
+		}
+	}
+	return (0);
+}
 
 static int	gnl_find_EOF(char **res, char **line)
 {
@@ -25,10 +54,10 @@ static int	gnl_find_EOF(char **res, char **line)
 		temp_1++;
 		*line = ft_strdup(*res);
 		*res = ft_strdup(temp_1);
-		free(temp_2);
 		return (1);
 	}
 	*line = ft_strdup(*res);
+	delmem(res);
 	return (0);
 }
 
@@ -43,7 +72,7 @@ static int	gnl_find_nl(char **res, char **line)
 	temp_2++;
 	*line = ft_strdup(*res);	
 	*res = ft_strdup(temp_2);
-	free(temp_1);
+	delmem(&temp_1);
 	return (1);
 }
 

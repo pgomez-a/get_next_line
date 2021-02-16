@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/11 09:37:35 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/16 08:42:21 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void)
 	r = 1;
 	while (r == 1)
 	{
-		r = get_next_line(10,  &line);
+		r = get_next_line(fd,  &line);
 		printf("%s\n", line);
 		i++;
 	}

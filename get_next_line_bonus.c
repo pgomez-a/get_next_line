@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 11:01:45 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/16 12:34:55 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int			get_next_line(int fd, char **line)
 		return (-1);
 	if (!res[fd])
 		res[fd] = ft_strdup("");
-	while (!(ft_strchr(res[fd], '\n')) && (num = read(fd, buff, BUFFER_SIZE)) > 0)
+	while (!(ft_strchr(res[fd], '\n')) &&
+			(num = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[num] = '\0';
 		temp = res[fd];

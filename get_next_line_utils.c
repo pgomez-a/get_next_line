@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/16 10:15:00 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/02/16 10:15:30 by pgomez-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
@@ -13,8 +25,8 @@ size_t	ft_strlen(const char *s)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	int	count_s1;
-	int	count_s2;
+	int		count_s1;
+	int		count_s2;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -51,8 +63,8 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strdup(const char *s1)
 {
-	int	count;
 	char	*str;
+	int		count;
 
 	count = 0;
 	while (s1[count])

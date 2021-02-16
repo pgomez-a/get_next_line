@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 11:21:39 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/16 12:32:47 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ int main(void)
 	while (r == 1)
 	{
 		r = get_next_line(fd,  &line);
+		if (line)
+			free(line);
 		printf("%s\n", line);
 		i++;
 	}
 	printf("\n\nFINAL\n\n");
 	close(fd);
+	system("leaks a.out");
 	return (0);
 }

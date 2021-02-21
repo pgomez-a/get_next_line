@@ -13,4 +13,4 @@ durante la lectura del archivo.</li>
 
 ### EJEMPLOS
 <img width="450" alt="Captura de pantalla 2021-02-21 a las 10 41 22" align="left" src="https://user-images.githubusercontent.com/74931024/108621227-c1e28700-7431-11eb-80ea-f9dff15c0ec9.png">
-<img width="462" alt="Captura de pantalla 2021-02-21 a las 10 43 23" align="right" src="https://user-images.githubusercontent.com/74931024/108621302-2dc4ef80-7432-11eb-977c-671b16f7e84a.png">
+<img width="1006" alt="Captura de pantalla 2021-02-21 a las 11 29 00" src="https://user-images.githubusercontent.com/74931024/108622289-0b35d500-7438-11eb-9ea7-c4cdd96604ce.png">

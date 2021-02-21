@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	gnl_find_eof(int fd, char **res, char **line)
 {
 	char	*temp_1;
 	char	*temp_2;
 
-	if ((temp_2 = ft_strchr(*res[fd], '\n')))
+	if ((temp_2 = ft_strchr(res[fd], '\n')))
 	{
-		temp_1 = *res[fd];
+		temp_1 = res[fd];
 		*temp_2 = '\0';
 		temp_2++;
-		*line = ft_strdup(*res[fd]);
-		*res[fd] = ft_strdup(temp_2);
+		*line = ft_strdup(res[fd]);
+		res[fd] = ft_strdup(temp_2);
 		free(temp_1);
 		return (1);
 	}
-	*line = ft_strdup(*res[fd]);
-	free(*res[fd]);
-	*res[fd] = NULL;
+	*line = ft_strdup(res[fd]);
+	free(res[fd]);
+	res[fd] = NULL;
 	return (0);
 }
 
@@ -38,12 +38,12 @@ static int	gnl_find_nl(int fd, char **res, char **line)
 	char	*temp_1;
 	char	*temp_2;
 
-	temp_1 = *res[fd];
-	temp_2 = ft_strchr(*res[fd], '\n');
+	temp_1 = res[fd];
+	temp_2 = ft_strchr(res[fd], '\n');
 	*temp_2 = '\0';
 	temp_2++;
-	*line = ft_strdup(*res[fd]);
-	*res[fd] = ft_strdup(temp_2);
+	*line = ft_strdup(res[fd]);
+	res[fd] = ft_strdup(temp_2);
 	free(temp_1);
 	return (1);
 }
@@ -68,9 +68,9 @@ int			get_next_line(int fd, char **line)
 		free(temp);
 	}
 	if (num == 0)
-		return (gnl_find_eof(fd, &res, line));
+		return (gnl_find_eof(fd, res, line));
 	else if (num > 0)
-		return (gnl_find_nl(fd, &res, line));
+		return (gnl_find_nl(fd, res, line));
 	free(res[fd]);
 	return (-1);
 }

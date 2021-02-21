@@ -12,9 +12,5 @@ durante la lectura del archivo.</li>
 </ul>
 
 ### EJEMPLOS
-<img width="450" alt="Captura de pantalla 2021-02-21 a las 10 41 22" align="left" src="https://user-images.githubusercontent.com/74931024/108621227-c1e28700-7431-11eb-80ea-f9dff15c0ec9.png">
-<img width="1006" alt="Captura de pantalla 2021-02-21 a las 11 29 00" src="https://user-images.githubusercontent.com/74931024/108622289-0b35d500-7438-11eb-9ea7-c4cdd96604ce.png">
-
-
-<img width="396" alt="Captura de pantalla 2021-02-21 a las 11 35 49" src="https://user-images.githubusercontent.com/74931024/108622451-340a9a00-7439-11eb-87a5-10d89985913c.png">
-<img width="846" alt="Captura de pantalla 2021-02-21 a las 11 37 07" src="https://user-images.githubusercontent.com/74931024/108622458-3cfb6b80-7439-11eb-8535-ec197d37b85d.png">
+<img width="370" alt="Captura de pantalla 2021-02-21 a las 11 35 49" align="left" src="https://user-images.githubusercontent.com/74931024/108622451-340a9a00-7439-11eb-87a5-10d89985913c.png">
+<img width="450" alt="Captura de pantalla 2021-02-21 a las 11 37 07" align="right" src="https://user-images.githubusercontent.com/74931024/108622458-3cfb6b80-7439-11eb-8535-ec197d37b85d.png">

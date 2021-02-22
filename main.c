@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:15:20 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 12:32:47 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/22 09:41:14 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
 	int i = 0;
 
 	fd = 0;
-	fd = open("t1_consalto.txt", O_RDONLY);
+	fd = open("texts/41_no_nl", O_RDONLY);
 	r = 1;
 	while (r == 1)
 	{

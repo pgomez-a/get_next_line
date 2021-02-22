@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:42:11 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 12:37:39 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/22 09:44:25 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 
 # ifndef M_SIZE
 #  define M_SIZE 65535
-# endif
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 36
 # endif
 
 int		get_next_line(int fd, char **line);

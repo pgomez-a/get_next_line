@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 08:42:11 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 11:21:05 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/02/22 09:42:15 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 36
-# endif
 
 int		get_next_line(int fd, char **line);
 

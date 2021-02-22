@@ -1,76 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 09:52:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/02/16 12:35:25 by pgomez-a         ###   ########.fr       */
+/*   Created: 2021/02/16 10:15:00 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/02/16 10:35:07 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
-static int	gnl_find_eof(char **res, char **line)
+size_t	ft_strlen(char const *s)
 {
-	char	*temp_1;
-	char	*temp_2;
+	int	i;
 
-	if ((temp_2 = ft_strchr(*res, '\n')))
-	{
-		temp_1 = *res;
-		*temp_2 = '\0';
-		temp_2++;
-		*line = ft_strdup(*res);
-		*res = ft_strdup(temp_2);
-		free(temp_1);
-		return (1);
-	}
-	*line = ft_strdup(*res);
-	free(*res);
-	*res = NULL;
-	return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-static int	gnl_find_nl(char **res, char **line)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*temp_1;
-	char	*temp_2;
+	char	*str;
+	int		count_s1;
+	int		count_s2;
 
-	temp_1 = *res;
-	temp_2 = ft_strchr(*res, '\n');
-	*temp_2 = '\0';
-	temp_2++;
-	*line = ft_strdup(*res);
-	*res = ft_strdup(temp_2);
-	free(temp_1);
-	return (1);
+	if (!s1 || !s2)
+		return (NULL);
+	count_s1 = ft_strlen(s1);
+	count_s2 = ft_strlen(s2);
+	if (!(str = (char *)malloc(sizeof(char) * (count_s1 + count_s2 + 1))))
+		return (NULL);
+	str[count_s1 + count_s2] = '\0';
+	while (count_s2 > 0)
+	{
+		str[count_s1 + count_s2 - 1] = s2[count_s2 - 1];
+		count_s2--;
+	}
+	while (count_s1 > 0)
+	{
+		str[count_s1 - 1] = s1[count_s1 - 1];
+		count_s1--;
+	}
+	return (str);
 }
 
-int			get_next_line(int fd, char **line)
+char	*ft_strchr(char const *s, int c)
 {
-	static char	*res[M_SIZE];
-	char		*temp;
-	char		buff[BUFFER_SIZE + 1];
-	int			num;
+	int	count;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
-		return (-1);
-	if (!res[fd])
-		res[fd] = ft_strdup("");
-	while (!(ft_strchr(res[fd], '\n')) &&
-			(num = read(fd, buff, BUFFER_SIZE)) > 0)
+	count = 0;
+	while (s[count] && (s[count] != (unsigned char)c))
+		count++;
+	if (s[count] == (unsigned char)c)
+		return ((char *)s + count);
+	else
+		return (NULL);
+}
+
+char	*ft_strdup(char const *s1)
+{
+	char	*str;
+	int		count;
+
+	count = 0;
+	while (s1[count])
+		count++;
+	if (!(str = (char *)malloc(sizeof(char) * (count + 1))))
+		return (NULL);
+	count = 0;
+	while (s1[count])
 	{
-		buff[num] = '\0';
-		temp = res[fd];
-		res[fd] = ft_strjoin(res[fd], buff);
-		free(temp);
+		str[count] = s1[count];
+		count++;
 	}
-	if (num == 0)
-		return (gnl_find_eof(&res[fd], line));
-	else if (num > 0)
-		return (gnl_find_nl(&res[fd], line));
-	free(res[fd]);
-	return (-1);
+	str[count] = '\0';
+	return (str);
 }

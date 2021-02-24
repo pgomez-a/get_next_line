@@ -14,7 +14,7 @@ int main(void)
 	r = 1;
 	while (r == 1)
 	{
-		r = get_next_line(fd,  &line);
+		r = get_next_line(-1,  &line);
 		if (line)
 			free(line);
 		printf("%s\n", line);

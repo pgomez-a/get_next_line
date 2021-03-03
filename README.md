@@ -16,7 +16,7 @@ When it comes to reading a file, the use of lseek function can be helpful. This 
 Since we are not allowed to use lseek, we can only read the file once, so we have to use a static variable to store the characters that we have read but that are after the line break, so they won't be in the current output but in the next. In this way, we are practicing with the use of static variables at the same time that we have to deal with dynamic memory.
 
 ### EXAMPLES OF USE
-<img width="465" align="right" alt="main_gnl" src="https://user-images.githubusercontent.com/74931024/109807633-7183da00-7c26-11eb-92fb-32fdaef4d8a0.png">
-<img width="465" alt="text_gnl" src="https://user-images.githubusercontent.com/74931024/109807650-75aff780-7c26-11eb-88b9-42a63e69c62b.png">
-<img width="465" align="right" alt="leaks_gnl" src="https://user-images.githubusercontent.com/74931024/109807661-78aae800-7c26-11eb-901c-ad31aebb7195.png">
-<img width="465" alt="output_gnl" src="https://user-images.githubusercontent.com/74931024/109807658-7779bb00-7c26-11eb-8b57-1322661a6ae6.png">
+<img width="465" alt="main_gnl" src="https://user-images.githubusercontent.com/74931024/109808430-65e4e300-7c27-11eb-9434-b3f64699795e.png">
+<img width="465" alt="text_gnl" src="https://user-images.githubusercontent.com/74931024/109808435-68473d00-7c27-11eb-8abc-401f970b5f60.png">
+<img width="465" alt="output_gnl" src="https://user-images.githubusercontent.com/74931024/109808440-68dfd380-7c27-11eb-9bf5-d0d180288a77.png">
+<img width="465" alt="leaks_gnl" src="https://user-images.githubusercontent.com/74931024/109808444-69786a00-7c27-11eb-8496-d2b5135dbb5a.png">

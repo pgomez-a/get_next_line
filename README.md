@@ -1,5 +1,5 @@
 # get_next_line
-<img width="1926" alt="Mark obtained" src="https://user-images.githubusercontent.com/74931024/109805172-6a0f0180-7c23-11eb-84c4-1eccf8de9751.png"><br>
+<img width="1926" alt="Graded by Deepthought" src="https://user-images.githubusercontent.com/74931024/109805172-6a0f0180-7c23-11eb-84c4-1eccf8de9751.png"><br>
 
 Thanks to **get_next_line** we will be able to read an open file line by line whose file descriptor is supplied as an argument. The main objective of the project is being able to work with static variables, as well as knowing how to manage dynamic memory so as not to obtain any memory leaks (leaks).
 

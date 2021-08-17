@@ -13,6 +13,27 @@ Since is a function of type int, our **get_next_line** returns a value of type i
  <li> 1: if it has found a line break, returning the content read up to that moment since the function was called.</li>
 </ul>
 
+### HOW TO USE GET_NEXT_LINE?
+1. Clone get_next_line repository:
+
+       git clone https://github.com/pgomez-a/get_next_line.git
+
+2. Move the two main functions to your main function (usually main.c):
+
+       mv get_next_line.c get_next_line_utils.c get_next_line.h ~/project_path/
+
+3. In you main function, include the header "get_next_line.h"
+
+       #include <stdio.h>
+       #include "get_next_line.h"
+       
+       int main(void)
+       {
+
+5. Compile your program with the three moved functions:
+
+       gcc get_next_line.c get_next_line_utils.c main.c
+
 ### ALLOWED FUNCTIONS
 When it comes to reading a file, the use of lseek function can be helpful. This function allows us to read the file forward and backward. However, in this project we can't use it. Instead of this, we can only use the external functions: **read, malloc and free.** If we want to use another function, we have to program it ourselves. This is the reason why I have used some of the functions of my **libft.**
 Since we are not allowed to use lseek, we can only read the file once, so we have to use a static variable to store the characters that we have read but that are after the line break, so they won't be in the current output but in the next. In this way, we are practicing with the use of static variables at the same time that we have to deal with dynamic memory.

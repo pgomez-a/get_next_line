@@ -30,7 +30,7 @@ Since is a function of type int, our **get_next_line** returns a value of type i
        int main(void)
        {
 
-5. Compile your program with the three moved functions:
+4. Compile your program with the three moved functions:
 
        gcc get_next_line.c get_next_line_utils.c main.c
 

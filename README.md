@@ -16,7 +16,7 @@ Since is a function of type int, our **get_next_line** returns a value of type i
 ### HOW TO USE GET_NEXT_LINE?
 1. Clone get_next_line repository:
 
-       git clone https://github.com/pgomez-a/get_next_line.git
+       git clone https://github.com/pgomez-a/get_next_line.git && cd get_next_line
 
 2. Move the two main functions to your main function (usually main.c):
 
